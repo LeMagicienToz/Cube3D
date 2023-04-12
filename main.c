@@ -6,7 +6,7 @@
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:41:24 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/12 10:53:40 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/12 11:09:35 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,9 @@ int	main(int argc, char **argv)
 	data.mlx.mlx = mlx_init();
 	ray_casting(&data);
 	make_img(&data);
+	data.mlx.mlx_win = mlx_new_window(data.mlx.mlx, data.mlx.width, \
+			data.mlx.height, "Cube 3D");
+	data.mlx.img = mlx_new_image(data.mlx.mlx, data.mlx.height, \
+			data.mlx.width);
+	mlx_loop(data.mlx.mlx);
 }

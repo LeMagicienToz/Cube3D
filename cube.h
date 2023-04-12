@@ -6,7 +6,7 @@
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:46:05 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/12 10:59:06 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/12 11:05:44 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <fcntl.h>
+# include <mlx.h>
 
 typedef struct s_mlx{
 	void	*mlx;
