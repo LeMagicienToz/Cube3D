@@ -6,13 +6,16 @@
 #    By: muteza <muteza@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 13:40:09 by muteza            #+#    #+#              #
-#    Updated: 2023/04/12 10:58:41 by muteza           ###   ########.fr        #
+#    Updated: 2023/04/12 14:34:18 by muteza           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS =	main.c\
 		parcing/parcing_map.c\
 		raycasting/ray_casting.c\
+		mlx/put_img.c\
+		raycasting/add_pos.c\
+		raycasting/movement.c\
 		utils/get_next_line.c\
 		utils/get_next_line_utils.c\
 		utils/ft_split.c\

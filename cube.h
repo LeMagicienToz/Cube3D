@@ -6,7 +6,7 @@
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:46:05 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/12 11:05:44 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/12 14:33:38 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdarg.h>
 # include <fcntl.h>
 # include <mlx.h>
+# include <math.h>
 
 typedef struct s_mlx{
 	void	*mlx;
@@ -39,13 +40,19 @@ typedef struct s_data{
 }t_data;
 
 //parcing
+void	check_pos(t_data *data);
 void	parcing_map(int fd, t_data *data);
 
 //LES MATH WHALHA
 void	ray_casting(t_data *data);
 
 //mlx
+void	put_img(t_data	*data);
 void	make_img(t_data *data);
+
+//movement
+void	move_top(t_data *data);
+int		hooks_player(int keycode, t_data *data);
 
 //utils
 int		ft_strlen_y(char **map);

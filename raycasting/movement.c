@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parcing_map.c                                      :+:      :+:    :+:   */
+/*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 14:34:26 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/12 13:14:30 by muteza           ###   ########.fr       */
+/*   Created: 2023/04/12 14:29:10 by muteza            #+#    #+#             */
+/*   Updated: 2023/04/12 14:43:52 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
-void	parcing_map(int fd, t_data *data)
+void	move_top(t_data *data)
 {
-	(void)fd;
-	data->map = ft_split("111111,10N101,101001,110001,111111", ',');
+	data->player.pos_y -= 64;
+	mlx_destroy_image(data->mlx.mlx, data->mlx.img);
+	put_img(data);
 }

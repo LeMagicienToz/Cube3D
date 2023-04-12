@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parcing_map.c                                      :+:      :+:    :+:   */
+/*   put_img.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 14:34:26 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/12 13:14:30 by muteza           ###   ########.fr       */
+/*   Created: 2023/04/12 12:30:15 by muteza            #+#    #+#             */
+/*   Updated: 2023/04/12 14:43:38 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
-void	parcing_map(int fd, t_data *data)
+void	put_img(t_data	*data)
 {
-	(void)fd;
-	data->map = ft_split("111111,10N101,101001,110001,111111", ',');
+	data->mlx.img = mlx_xpm_file_to_image(data->mlx.mlx, \
+		"utils/sprite/goose.xpm", &data->mlx.width, &data->mlx.height);
+	mlx_put_image_to_window(data->mlx.mlx, data->mlx.mlx_win, \
+		data->mlx.img, data->player.pos_x, data->player.pos_y);
 }
