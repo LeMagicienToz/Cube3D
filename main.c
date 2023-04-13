@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rperrin <rperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:41:24 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/12 14:33:51 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/13 02:51:45 by rperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,32 @@ char	*parcing_name(char *str)
 	char	*res;
 
 	i = 0;
-	while (str[i])
+	while (str && str[i])
 		i++;
 	res = malloc(sizeof(char ) * i + 1);
+	if (!res)
+		return (NULL);
+	res[i] = 0;
+	i = 0;
+	while (str[i])
+	{
+		res[i] = str[i];
+		i++;
+	}
 	return (str);
 }
 
 int	main(int argc, char **argv)
 {
-	int		fd;
 	char	*name;
 	t_data	data;
 
 	if (argc != 2)
 		return (0);
-	name = parcing_name(argv[1]);
-	fd = open(name, O_RDONLY);
-	parcing_map(fd, &data);
+	name = ft_strdup(argv[1]);
+	printf("test\n");
+	parcing_map(name, &data);
+	exit(1);
 	data.mlx.mlx = mlx_init();
 	ray_casting(&data);
 	make_img(&data);

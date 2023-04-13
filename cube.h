@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rperrin <rperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:46:05 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/12 14:33:38 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/13 02:32:19 by rperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,25 @@ typedef struct s_player{
 	int	pos_y;
 }t_player;
 
+typedef struct s_utils{
+	int	col;
+	int	line;
+	int	len;
+	int	i;
+	int	j;
+}t_utils;
+
 typedef struct s_data{
 	char		**map;
+	int			error;
 	t_mlx		mlx;
 	t_player	player;
+	t_utils		u;
 }t_data;
 
 //parcing
 void	check_pos(t_data *data);
-void	parcing_map(int fd, t_data *data);
+void	parcing_map(char *name, t_data *data);
 
 //LES MATH WHALHA
 void	ray_casting(t_data *data);
@@ -62,5 +72,5 @@ char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strchr(char *s, int c);
 size_t	ft_strlen(char *str);
 char	*get_next_line(int fd);
-
+char	*ft_strdup(const char *src);
 #endif

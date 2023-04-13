@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: muteza <muteza@student.42.fr>              +#+  +:+       +#+         #
+#    By: rperrin <rperrin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 13:40:09 by muteza            #+#    #+#              #
-#    Updated: 2023/04/12 14:34:18 by muteza           ###   ########.fr        #
+#    Updated: 2023/04/13 02:32:09 by rperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS =	main.c\
 		utils/get_next_line_utils.c\
 		utils/ft_split.c\
 		utils/ft_strlen_y.c\
+		utils/ft_strdup.c\
 		utils/ft_strlcpy.c\
 
 OBJS	= ${SRCS:.c=.o}
