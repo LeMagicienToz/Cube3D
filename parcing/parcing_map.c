@@ -5,124 +5,88 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rperrin <rperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 14:34:26 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/13 02:57:53 by rperrin          ###   ########.fr       */
+/*   Created: 2023/04/15 02:43:34 by rperrin           #+#    #+#             */
+/*   Updated: 2023/04/16 01:47:26 by rperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
-void	getlenmap(int fd, t_data *data)
+void	norm()
 {
-	int		r;
-	char	c;
-
-	r = 1;
-	data->u.len = 0;
-	data->u.line = 0;
-	data->u.col = 0;
-	while (r > 0)
-	{
-		r = read(fd, &c, 1);
-		if (r == -1)
-		{
-			data->error = 10;
-			return ;
-		}
-		if (c == '\n')
-			data->u.line++;
-		data->u.len++;
-		if (data->u.len == 1)
-			data->u.line++;
-	}
-	data->u.col = data->u.len / data->u.line;
-	close (fd);
 }
 
-void	copymap(int fd, t_data *data)
-{
-	char	c;
-	int		r;
-
-	r = 1;
-	while (r > 0)
-	{
-		r = read(fd, &c, 1);
-		data->map[data->u.j][data->u.i] = c;
-		if (c == '\n')
-		{
-			data->u.i = 0;
-			data->u.j++;
-		}
-		if (c != '\0')
-			data->u.i++;
-	}
-	close (fd);
-}
-
-void	initmap(char	*name, t_data *data)
-{
-	int		r;
-	int		fd;
-
-	r = 1;
-	data->u.j = 0;
-	data->u.i = 0;
-	fd = open(name, O_RDONLY);
-	getlenmap(fd, data);
-	printf("data->u.line %d data->u.col %d data->u.len %d\n", data->u.line, data->u.len, data->u.col);
-	if (data->error == 10)
-		printf("bug init map\n");
-	fd = open(name, O_RDONLY);
-	data->map = malloc(sizeof(char *) * (data->u.line + 1));
-	if (!data->map)
-		return ;
-	data->map[data->u.line] = NULL;
-	while (data->map[data->u.j])
-	{
-		data->map[data->u.j] = malloc(data->u.col + 1);
-		if (!data->map[data->u.j])
-			return ;
-		data->map[data->u.j++][data->u.col] = 0;
-	}
-	data->u.j = 0;
-	copymap(fd, data);
-}
-
-
-void	print_map(char **str)
+int	ft_strcmp(char *check, char *str)
 {
 	int		i;
+	int		j;
 
-	i = 0;
-	if (str == NULL)
+	(norm(), i = 0, j = 0);
+	while (check[j])
 	{
-		printf("ERROR NO MAP !\n");
-		return ;
+		while (str[i])
+		{
+			if (str[i++] == check[j])
+				return (1);
+		}
+		i = 0;
+		j++;
 	}
-	while (str && str[i])
-	{
-		printf("lol\n");
-		i++;
-	}
-		// printf("%s", str[i++]);
+	return (0);
 }
 
-
-void	parcing_map(char *name, t_data *data)
+int	check_walls_cut(t_data *data, int i, int j)
 {
-	data->map = NULL;
-	//initmap(name, data);
-	print_map(data->map);
+	// printf("[%c]", data->map[j + 1][i]);
+	// printf("[%c]", data->map[j][i + 1]);
+	// printf("[%c]", data->map[j - 1][i]);
+	// printf("[%c]\n\n", data->map[j][i - 1]);
+	// printf("VALIDE %d\n", ft_strcmp("0NSWE ", &data->map[j + 1][i]));
+	// printf("PAS VALIDE %d\n", ft_strcmp("0NSWE ", &data->map[j][i - 1]));
+	if (data->map[j + 1][i] && data->map[j - 1][i] && ft_strcmp(\
+	"1", &data->map[j + 1][i]) == 0 && ft_strcmp("1", &data->map[j - 1][i]))
+	{
+		printf("COUCOU\n");
+		if (!data->map[j][i + 1] || !data->map[j][i - 1])
+			return (1);
+		if ((data->map[j][i + 1] && data->map[j][i - 1] ) && ( ft_strcmp("0NSWE "\
+		, &data->map[j][i + 1]) && ft_strcmp("0NSWE ", &data->map[j][i - 1]) ))
+			return (1);
+	}
+	return (0);
+	// if (data->map[j - 1][i] && ft_strcmp("1", &data->map[j - 1][i]))
+
+	// if (data->map[j][i + 1] && ft_strcmp("0NSWE ", &data->map[j][i + 1]))
+	// 	return (1);
+	// 	return (1);
+	// if (data->map[j][i - 1] && ft_strcmp("0NSWE ", &data->map[j - 1][i]))
+	// 	return (1);
+	// return (0);
 }
 
-// int		check_wall(t_data *data)
-// {
-// 	while (data->map[j])
-// 	{
-// 		while (data->map[j][i])
-// 		{
-			
-// 		}
-// 	}
-// }
+int	check_walls(t_data	*data)
+{
+	int		i;
+	int		j;
+	int		k;
+
+	(norm(), i = 0, k = 0, j = 0);
+	while (data->map[j])
+	{
+		while (data->map[j][i])
+		{
+			//printf("TEST j = %d i = %d [%c]\n", j, i, data->map[j][i]);
+			if (data->map[j][i++] == '0')
+			{
+				if (check_walls_cut(data, 4, 1))
+				{
+					printf("PAS VALIDE\n");
+				}
+			}
+		}
+		printf("\n");
+		i = 0;
+		j++;
+	}
+	return (0);
+}

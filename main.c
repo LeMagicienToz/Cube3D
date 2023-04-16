@@ -6,7 +6,7 @@
 /*   By: rperrin <rperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:41:24 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/13 02:51:45 by rperrin          ###   ########.fr       */
+/*   Updated: 2023/04/15 01:41:44 by rperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,11 @@ char	*parcing_name(char *str)
 
 int	main(int argc, char **argv)
 {
-	char	*name;
 	t_data	data;
 
 	if (argc != 2)
 		return (0);
-	name = ft_strdup(argv[1]);
-	printf("test\n");
-	parcing_map(name, &data);
+	parcing_map(argv[1], &data);
 	exit(1);
 	data.mlx.mlx = mlx_init();
 	ray_casting(&data);
