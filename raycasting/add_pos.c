@@ -6,7 +6,7 @@
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:49:17 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/14 17:19:16 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/17 14:25:15 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	hooks_player(int keycode, t_data *data)
 		return (0);
 	}
 	return (1);
-
 }
 
 void	check_pos(t_data *data)
@@ -71,7 +70,8 @@ void	check_pos(t_data *data)
 		{
 			if (data->map[i][k] == '0' || data->map[i][k] == '1' || \
 			data->map[i][k] == 'N' || data->map[i][k] == 'S' || \
-			data->map[i][k] == 'E' || data->map[i][k] == 'W')
+			data->map[i][k] == 'E' || data->map[i][k] == 'W' || \
+			data->map[i][k] == '\n' || data->map[i][k] == ' ')
 				register_pos(data, i, k);
 			else
 				exit(0);

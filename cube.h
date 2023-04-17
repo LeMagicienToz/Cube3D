@@ -6,7 +6,7 @@
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 13:57:35 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/17 14:00:32 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/17 15:12:35 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,20 @@ typedef struct s_mlx{
 typedef struct s_raycas{
 	int		dir_x;
 	int		dir_y;
+	int		map_x;
+	int		map_y;
 	double	raydir_x;
 	double	raydir_y;
 	double	plane_x;
 	double	plane_y;
 	int		cam_x;
 	int		time;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	side_dist_x;
+	double	side_dist_y;
 	int		old_time;
+
 }t_raycas;
 
 typedef struct s_player{

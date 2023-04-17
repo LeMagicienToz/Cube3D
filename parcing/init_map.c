@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rperrin <rperrin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 10:43:32 by raphaelperr       #+#    #+#             */
-/*   Updated: 2023/04/15 18:01:06 by rperrin          ###   ########.fr       */
+/*   Updated: 2023/04/17 14:25:32 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ void	parcing_map(char *name, t_data *data)
 	init_map_string(name, data);
 	get_map(name, data);
 	print_map(data->map);
-	printf("===================================\n");
-	printf("%d", check_walls(data));
+	// printf("===================================\n");
+	// printf("%d", check_walls(data));
 }

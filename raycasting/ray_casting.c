@@ -6,7 +6,7 @@
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:24:31 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/14 18:43:33 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/17 15:20:15 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,30 @@ void	ini_raycas(t_data *data)
 	data->raycas.old_time = 0;
 }
 
+void	pythagour(t_data *data)
+{
+	if (data->raycas.raydir_x == 0)
+		data->raycas.delta_dist_x = 1e10;
+	else
+	{
+		data->raycas.delta_dist_x = sqrt(1 + \
+		(data->raycas.raydir_y * data->raycas.raydir_y) / \
+		(data->raycas.raydir_x * data->raycas.raydir_x));
+	}
+	if (data->raycas.raydir_y == 0)
+		data->raycas.delta_dist_y = 1e10;
+	else
+	{
+		data->raycas.delta_dist_y = sqrt(1 + \
+		(data->raycas.raydir_x * data->raycas.raydir_x) / \
+		(data->raycas.raydir_y * data->raycas.raydir_y));
+	}
+}
+
+// void	other_calc(t_data *data)
+// {
+// }
+
 int	ray_casting(t_data *data)
 {
 	int	x;
@@ -47,6 +71,9 @@ int	ray_casting(t_data *data)
 		data->raycas.raydir_y = data->raycas.dir_y + \
 		data->raycas.plane_y + data->raycas.cam_x;
 		x++;
+		pythagour(data);
+		// other_calc(data);
+		// printf("%d\n", data->raycas.cam_x);
 	}
 	check_all_movement(data);
 	data->key_code = 0; //check key realease
