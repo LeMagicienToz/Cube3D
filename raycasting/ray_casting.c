@@ -6,7 +6,7 @@
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:24:31 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/12 13:12:32 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/14 18:43:33 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,34 @@ void	make_img(t_data *data)
 	data->mlx.img = 0;
 }
 
-void	ray_casting(t_data *data)
+void	ini_raycas(t_data *data)
 {
-	(void)data;
+	data->raycas.dir_x = -1;
+	data->raycas.dir_y = 0;
+	data->raycas.plane_x = 0;
+	data->raycas.plane_y = 0.66;
+	data->raycas.time = 0;
+	data->raycas.old_time = 0;
+}
+
+int	ray_casting(t_data *data)
+{
+	int	x;
+	int	w;
+
+	x = 0;
+	w = data->mlx.width;
+	// printf("%d\n %d", data->mlx.width);
+	while (x < w)
+	{
+		data->raycas.cam_x = 2 * x / (double)w - 1;
+		data->raycas.raydir_x = data->raycas.dir_x + \
+		data->raycas.plane_x + data->raycas.cam_x;
+		data->raycas.raydir_y = data->raycas.dir_y + \
+		data->raycas.plane_y + data->raycas.cam_x;
+		x++;
+	}
+	check_all_movement(data);
+	data->key_code = 0; //check key realease
+	return(0);
 }

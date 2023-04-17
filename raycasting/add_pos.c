@@ -6,7 +6,7 @@
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:49:17 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/12 14:52:40 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/14 17:19:16 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,14 @@ void	register_pos(t_data *data, int i, int k)
 	{
 		data->player.pos_x = k * 64;
 		data->player.pos_y = i * 64;
-		printf("pos x = %d\n", data->player.pos_x);
-		printf("pos y = %d\n", data->player.pos_y);
+		ini_raycas(data);
+		// printf("pos x = %d\n", data->player.pos_x);
+		// printf("pos y = %d\n", data->player.pos_y);
 		put_img(data);
 	}
-	else
-		printf("ok\n");
 }
 
-void	exit_esc(t_data *data)
+int	exit_esc(t_data *data)
 {
 	int	i;
 
@@ -37,6 +36,7 @@ void	exit_esc(t_data *data)
 		free(data->map[i++]);
 	}
 	exit(0);
+	return(0);
 }
 
 int	hooks_player(int keycode, t_data *data)
@@ -50,8 +50,11 @@ int	hooks_player(int keycode, t_data *data)
 	// if (keycode == 0)
 	// 	move_left(data);
 	if (keycode == 53)
+	{
 		exit_esc(data);
-	return (0);
+		return (0);
+	}
+	return (1);
 
 }
 
