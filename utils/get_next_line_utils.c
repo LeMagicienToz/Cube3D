@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rperrin <rperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:46:03 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/07 14:46:20 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/13 02:31:50 by rperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		n++;
 	}
 	str[i + n] = 0;
-	free(s1);
+	if (s1)
+		free(s1);
 	return (str);
 }
