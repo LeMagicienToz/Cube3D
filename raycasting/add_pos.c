@@ -6,7 +6,7 @@
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:49:17 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/17 14:25:15 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/17 19:53:26 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	register_pos(t_data *data, int i, int k)
 	{
 		data->player.pos_x = k * 64;
 		data->player.pos_y = i * 64;
-		ini_raycas(data);
 		// printf("pos x = %d\n", data->player.pos_x);
 		// printf("pos y = %d\n", data->player.pos_y);
 		put_img(data);

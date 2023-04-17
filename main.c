@@ -6,7 +6,7 @@
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:41:24 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/17 14:27:09 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/17 19:53:43 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (0);
+	(void)argv;
 	parcing_map(argv[1], &data);
 	// init_map()
 	// exit(1);
@@ -49,6 +50,7 @@ int	main(int argc, char **argv)
 			data.mlx.width);
 	printf("HERE\n");
 	check_pos(&data);
+	ini_raycas(&data);
 	// mlx_key_hook(data.mlx.mlx_win, hooks_player, &data);
 	mlx_hook(data.mlx.mlx_win, KEYPRESS, 0, key_press_code, &data);
 	// ray_casting(&data);

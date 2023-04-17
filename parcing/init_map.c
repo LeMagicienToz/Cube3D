@@ -6,7 +6,7 @@
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 10:43:32 by raphaelperr       #+#    #+#             */
-/*   Updated: 2023/04/17 14:25:32 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/17 17:54:40 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,16 @@ void	get_map(char *myfile, t_data *data)
 
 void	parcing_map(char *name, t_data *data)
 {
-	data->lin = 0;
-	data->col = 0;
-	init_map(name, data);
-	init_map_string(name, data);
-	get_map(name, data);
+	(void)name;
+	data->map = ft_split("111111,100001,100N01,110001,111111", ',');
+	// data->map = ft_split("111111,10N001,101001,110001,111111", ',');
 	print_map(data->map);
+	// data->lin = 0;
+	// data->col = 0;
+	// init_map(name, data);
+	// init_map_string(name, data);
+	// get_map(name, data);
+	// print_map(data->map);
 	// printf("===================================\n");
 	// printf("%d", check_walls(data));
 }

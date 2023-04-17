@@ -6,7 +6,7 @@
 #    By: muteza <muteza@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 13:40:09 by muteza            #+#    #+#              #
-#    Updated: 2023/04/17 14:03:53 by muteza           ###   ########.fr        #
+#    Updated: 2023/04/17 20:12:42 by muteza           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRCS =	main.c\
 		parcing/init_map.c\
 		parcing/parcing_map.c\
 		raycasting/ray_casting.c\
+		raycasting/utils_raycas.c\
 		mlx/put_img.c\
 		raycasting/add_pos.c\
 		raycasting/movement.c\
@@ -36,7 +37,7 @@ CC		= gcc
 
 RM		= rm -f
 
-CFLAGS	= -Wall -Wextra -Werror -g $< -o $@ #-fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -g $< -o $@ -fsanitize=address
 
 %.o:%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
