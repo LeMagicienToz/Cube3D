@@ -6,7 +6,7 @@
 #    By: muteza <muteza@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 13:40:09 by muteza            #+#    #+#              #
-#    Updated: 2023/04/17 20:12:42 by muteza           ###   ########.fr        #
+#    Updated: 2023/04/19 14:01:16 by muteza           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ CC		= gcc
 
 RM		= rm -f
 
-CFLAGS	= -Wall -Wextra -Werror -g $< -o $@ -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -g $< -o $@ #-fsanitize=address
 
 %.o:%.c
 	@$(CC) $(CFLAGS) -c $< -o $@

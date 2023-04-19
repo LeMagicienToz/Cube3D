@@ -6,7 +6,7 @@
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 13:57:35 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/17 20:15:10 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/19 15:36:52 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,26 @@ typedef struct s_mlx{
 	void	*mlx_win;
 }t_mlx;
 
+typedef struct s_vec{
+	double	x;
+	double	y;
+}t_vec;
+
 typedef struct s_raycas{
 	int		dir_x;
 	int		dir_y;
-	double	map_x;
-	double	map_y;
-	double	perp_wall_dist;
+	t_vec	map;
 	int		stepx;
 	int		stepy;
 	int		hit;
 	int		side;
-	double	raydir_x;
-	double	raydir_y;
-	double	plane_x;
-	double	plane_y;
+	t_vec	ray_dir;
+	t_vec	plane;
+	double	dist_perp;
 	int		cam_x;
 	int		time;
-	double	delta_dist_x;
-	double	delta_dist_y;
-	double	side_dist_x;
-	double	side_dist_y;
+	t_vec	delta_dist;
+	t_vec	side_dist;
 	int		old_time;
 
 }t_raycas;
@@ -82,6 +82,8 @@ typedef struct s_data{
 	int			lin;
 	int			i;
 	int			j;
+	// t_value		flor;
+	// t_value		sky;
 	char		c;
 	t_utils		*u;
 	int			key_code;
@@ -103,6 +105,7 @@ void	get_map(char *myfile, t_data *data);
 //LES MATH WHALHA
 int		ray_casting(t_data *data);
 void	ini_raycas(t_data *data);
+void	dir_ray(t_data *data);
 
 //mlx
 int		exit_esc(t_data *data);
