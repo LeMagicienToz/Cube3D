@@ -6,7 +6,7 @@
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:49:17 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/17 19:53:26 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/20 16:32:27 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,21 @@ int	exit_esc(t_data *data)
 	return(0);
 }
 
-int	hooks_player(int keycode, t_data *data)
+void	hooks_player(int keycode, t_data *data)
 {
+	(void)keycode;
+	check_all_movement(data);
 	// if (keycode == 13)
-	// 	move_top(data);
+	// 	move_foward(data);
 	// if (keycode == 1)
-	// 	move_down(data);
+	// 	move_back(data);
 	// if (keycode == 2)
 	// 	move_right(data);
 	// if (keycode == 0)
 	// 	move_left(data);
-	if (keycode == 53)
-	{
-		exit_esc(data);
-		return (0);
-	}
-	return (1);
+	// if (keycode == 53)
+	// 	exit_esc(data);
+	// printf("dwadwa\n");
 }
 
 void	check_pos(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 13:57:35 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/19 15:36:52 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/20 17:44:15 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define KEYRELEASE 3
 # define KEYQUIT 17
 
+# define ROT_L 123
+# define ROT_R 124
 # define KEY_ESC 53
 # define KEY_W 13
 # define KEY_A 0
@@ -49,6 +51,8 @@ typedef struct s_raycas{
 	int		dir_x;
 	int		dir_y;
 	t_vec	map;
+	int		h_top;
+	int		h_bot;
 	int		stepx;
 	int		stepy;
 	int		hit;
@@ -75,6 +79,11 @@ typedef struct s_utils
 	int		max_i;
 }	t_utils;
 
+typedef struct s_value{
+	int		height;
+	int		weight;
+}t_value;
+
 typedef struct s_data{
 	char		**map;
 	int			error;
@@ -82,8 +91,8 @@ typedef struct s_data{
 	int			lin;
 	int			i;
 	int			j;
-	// t_value		flor;
-	// t_value		sky;
+	t_value		flor;
+	t_value		sky;
 	char		c;
 	t_utils		*u;
 	int			key_code;
@@ -108,6 +117,8 @@ void	ini_raycas(t_data *data);
 void	dir_ray(t_data *data);
 
 //mlx
+void	put_map_to_window_first(t_data *data);
+void	put_map_to_window(t_data *data);
 int		exit_esc(t_data *data);
 void	put_img(t_data	*data);
 void	make_img(t_data *data);
@@ -119,7 +130,7 @@ void	move_back(t_data *data);
 void	check_all_movement(t_data *data);
 int		key_press_code(int key, t_data *data);
 void	move_foward(t_data *data);
-int		hooks_player(int keycode, t_data *data);
+void	hooks_player(int keycode, t_data *data);
 
 //utils
 void	print_map(char **str);
