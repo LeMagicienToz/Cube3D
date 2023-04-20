@@ -6,7 +6,7 @@
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:41:24 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/20 17:35:36 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/20 18:23:03 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,14 @@ int	main(int argc, char **argv)
 		return (0);
 	(void)argv;
 	parcing_map(argv[1], &data);
-	// init_map()
-	// exit(1);
 	data.mlx.mlx = mlx_init();
 	make_img(&data);
 	data.mlx.mlx_win = mlx_new_window(data.mlx.mlx, data.mlx.width, data.mlx.height, "Cube 3D");
 	data.mlx.img = mlx_new_image(data.mlx.mlx, data.mlx.height, \
 			data.mlx.width);
-	// printf("HERE\n");
 	check_pos(&data);
 	ini_raycas(&data);
 	put_map_to_window_first(&data);
-	// mlx_key_hook(data.mlx.mlx_win, hooks_player, &data);
-	// ray_casting(&data);
 	mlx_hook(data.mlx.mlx_win, KEYPRESS, 0, key_press_code, &data);
 	mlx_loop_hook(data.mlx.mlx, ray_casting, &data);
 	mlx_loop(data.mlx.mlx);

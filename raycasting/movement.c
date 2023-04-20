@@ -6,19 +6,30 @@
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:29:10 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/20 17:47:05 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/20 18:21:32 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
-// void	rotation_exec(t_data *data)
-// {
-// 	if (data->key_code == 6)
-// 		rota_right(data);
-// 	if (data->key_code == 7)
-// 		rota_left(data);
-// }
+void	rota_vec(t_vec *vector, double ankle)
+{
+	double	x;
+	double	y;
+
+	x = cos(ankle) * vector->x + -sin(ankle) * vector->y;
+	y = sin(ankle) * vector->x + cos(ankle) * vector->y;
+	vector->x = x;
+	vector->y = y;
+}
+
+void	rotation_exec(t_data *data)
+{
+	if (data->key_code == 6)
+		rota_vec(&data->raycas.plane, M_PI / -180 * ROTA);
+	if (data->key_code == 7)
+		rota_vec(&data->raycas.plane, M_PI / 180 * ROTA);
+}
 
 void	check_all_movement(t_data *data)
 {
@@ -32,7 +43,7 @@ void	check_all_movement(t_data *data)
 		move_left(data);
 	if (data->key_code == 5)
 		move_right(data);
-	// rotation_exec(data);
+	rotation_exec(data);
 	data->key_code = 0;
 }
 

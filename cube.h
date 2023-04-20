@@ -6,7 +6,7 @@
 /*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 13:57:35 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/20 17:44:15 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/20 18:04:04 by muteza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 # define ROT_L 123
 # define ROT_R 124
+# define ROTA 2
 # define KEY_ESC 53
 # define KEY_W 13
 # define KEY_A 0
