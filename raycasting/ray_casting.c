@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
+/*   By: uteza <uteza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:24:31 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/20 16:24:13 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/25 11:27:35 by uteza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,11 +103,11 @@ void	dir_ray(t_data *data)
 
 int	ray_casting(t_data *data)
 {
-	int	x;
+	/*int	x;
 	int	w;
 
 	x = 0;
-	w = data->mlx.width;
+	w = data->mlx.width;*/
 	// while (x < w)
 	// {
 	// 	data->raycas.cam_x = 2 * x / (double)w - 1;

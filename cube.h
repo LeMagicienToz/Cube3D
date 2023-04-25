@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muteza <muteza@student.42.fr>              +#+  +:+       +#+        */
+/*   By: uteza <uteza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 13:57:35 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/20 18:04:04 by muteza           ###   ########.fr       */
+/*   Updated: 2023/04/25 14:43:51 by uteza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <fcntl.h>
-# include "mlx/minilibx/mlx.h"
+# include "./minilibx/mlx.h"
+// # include "minilibx/mlx_int.h"
+// # include "minilibx/mlx_new_window.h"
+// # include "minilibx/mlx_opengl.h"
+// # include "minilibx/mlx_png.h"
 # include <math.h>
 
 # define KEYPRESS 2

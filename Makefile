@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: muteza <muteza@student.42.fr>              +#+  +:+       +#+         #
+#    By: uteza <uteza@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 13:40:09 by muteza            #+#    #+#              #
-#    Updated: 2023/04/20 15:32:31 by muteza           ###   ########.fr        #
+#    Updated: 2023/04/25 14:49:40 by uteza            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRCS =	main.c\
 		parcing/parcing_map.c\
 		raycasting/ray_casting.c\
 		raycasting/utils_raycas.c\
-		mlx/put_img.c\
+		put_img/put_img.c\
 		raycasting/add_pos.c\
 		raycasting/movement.c\
 		utils/print_map.c\
@@ -41,10 +41,15 @@ CFLAGS	= -Wall -Wextra -Werror -g $< -o $@ -fsanitize=address
 
 %.o:%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf $$'\033[1m*'
 
-$(NAME):
+$(NAME):	minilibx/libmlx.a
 			$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit -lz $(SRCS) -o $(NAME)
+
+mlx:	
+		curl https://raw.githubusercontent.com/Nimpoo/cub3d/dev/minilibx.tgz -o minilibx.tgz
+		tar -xf minilibx.tgz
+		rm minilibx.tgz
+		make -C minilibx
 
 all:	${NAME}
 
@@ -56,4 +61,4 @@ fclean:	clean
 
 re :	fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re mlx
