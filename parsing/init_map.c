@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rperrin <rperrin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: raphaelperrin <raphaelperrin@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 10:43:32 by raphaelperr       #+#    #+#             */
-/*   Updated: 2023/04/15 18:01:06 by rperrin          ###   ########.fr       */
+/*   Updated: 2023/04/26 16:17:50 by raphaelperr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	get_map(char *myfile, t_data *data)
 	close(filedesc);
 }
 
-void	parcing_map(char *name, t_data *data)
+int	parsing_map(char *name, t_data *data)
 {
 	data->lin = 0;
 	data->col = 0;
@@ -95,6 +95,7 @@ void	parcing_map(char *name, t_data *data)
 	init_map_string(name, data);
 	get_map(name, data);
 	print_map(data->map);
-	printf("===================================\n");
-	printf("%d", check_walls(data));
+	exit(1);
+	return(check_walls(data));
+	// return (0);
 }

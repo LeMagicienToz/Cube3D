@@ -3,20 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rperrin <rperrin@student.42.fr>            +#+  +:+       +#+         #
+#    By: raphaelperrin <raphaelperrin@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 13:40:09 by muteza            #+#    #+#              #
-#    Updated: 2023/04/16 01:26:16 by rperrin          ###   ########.fr        #
+#    Updated: 2023/04/26 15:55:20 by raphaelperr      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS =	main.c\
-		parcing/init_map.c\
-		parcing/parcing_map.c\
-		raycasting/ray_casting.c\
-		mlx/put_img.c\
-		raycasting/add_pos.c\
-		raycasting/movement.c\
+		parsing/init_map.c\
+		parsing/check_walls.c\
+		parsing/check_args.c\
+		utils/ft_strcmp_r.c\
 		utils/print_map.c\
 		utils/ft_bzero.c\
 		utils/ft_calloc.c\
@@ -35,14 +33,14 @@ CC		= gcc
 
 RM		= rm -f
 
-CFLAGS	= -Wall -Wextra -Werror -g $< -o $@ #-fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -g $< -o $@ -fsanitize=address
 
 %.o:%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf $$'\033[1m*'
 
 $(NAME):
-			$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit -lz $(SRCS) -o $(NAME)
+			$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
 
 all:	${NAME}
 

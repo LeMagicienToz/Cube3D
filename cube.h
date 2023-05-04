@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rperrin <rperrin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: raphaelperrin <raphaelperrin@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:46:05 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/16 01:26:10 by rperrin          ###   ########.fr       */
+/*   Updated: 2023/04/25 11:16:04 by raphaelperr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <fcntl.h>
-# include <mlx.h>
 # include <math.h>
 
 typedef struct s_mlx{
@@ -47,15 +46,20 @@ typedef struct s_data{
 	int			i;
 	int			j;
 	char		c;
+	int			good;
 	t_utils		*u;
 	t_mlx		mlx;
 	t_player	player;
 }t_data;
 
-//parcing
+//parsing
 void	check_pos(t_data *data);
-void	parcing_map(char *name, t_data *data);
+int		parsing_map(char *name, t_data *data);
 int		check_walls(t_data	*data);
+int		parsing_name(char *str);
+int		parsing_ext(char *str);
+int		check_codec(char *name);
+int		check_file(char *name);
 
 //init_map
 void	init_map(char *myfile, t_data *data);
