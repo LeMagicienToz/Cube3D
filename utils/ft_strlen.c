@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: raphaelperrin <raphaelperrin@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/23 16:39:58 by raphaelperr       #+#    #+#             */
-/*   Updated: 2023/05/16 01:45:40 by raphaelperr      ###   ########.fr       */
+/*   Created: 2023/05/13 15:17:12 by raphaelperr       #+#    #+#             */
+/*   Updated: 2023/05/16 01:24:39 by raphaelperr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../cube.h"
 
-int	main(int argc, char **argv)
+int	ft_strlen(char *str)
 {
-	t_data data;
+	int	len;
 
-	if (make_all_test(&data, argc, argv))
-		return (1);
-	else
-		printf("\n[PARSING : GOOD]\n");
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
 }

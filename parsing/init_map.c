@@ -6,13 +6,13 @@
 /*   By: raphaelperrin <raphaelperrin@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 10:43:32 by raphaelperr       #+#    #+#             */
-/*   Updated: 2023/04/26 16:17:50 by raphaelperr      ###   ########.fr       */
+/*   Updated: 2023/05/13 15:09:10 by raphaelperr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
-void	init_map(char *myfile, t_data *data)
+void	alloc_map(char *myfile, t_data *data)
 {
 	int	filedesc;
 	int	x;
@@ -38,7 +38,7 @@ void	init_map(char *myfile, t_data *data)
 	close (filedesc);
 }
 
-void	init_map_string(char *myfile, t_data *data)
+void	alloc_map_line(char *myfile, t_data *data)
 {
 	int	i;
 	int	filedesc;
@@ -53,6 +53,7 @@ void	init_map_string(char *myfile, t_data *data)
 			if (data->map[i] == NULL)
 				exit(EXIT_FAILURE);
 			data->map[i++][data->col] = '\0';
+			data->col = 0;
 		}
 		else
 			data->col++;
@@ -87,15 +88,11 @@ void	get_map(char *myfile, t_data *data)
 	close(filedesc);
 }
 
-int	parsing_map(char *name, t_data *data)
+void	init_map(char *name, t_data *data)
 {
 	data->lin = 0;
 	data->col = 0;
-	init_map(name, data);
-	init_map_string(name, data);
+	alloc_map(name, data);
+	alloc_map_line(name, data);
 	get_map(name, data);
-	print_map(data->map);
-	exit(1);
-	return(check_walls(data));
-	// return (0);
 }

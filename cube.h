@@ -6,7 +6,7 @@
 /*   By: raphaelperrin <raphaelperrin@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:46:05 by muteza            #+#    #+#             */
-/*   Updated: 2023/04/25 11:16:04 by raphaelperr      ###   ########.fr       */
+/*   Updated: 2023/05/16 21:47:15 by raphaelperr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdarg.h>
 # include <fcntl.h>
 # include <math.h>
+# include <limits.h>
 
 typedef struct s_mlx{
 	void	*mlx;
@@ -46,6 +47,12 @@ typedef struct s_data{
 	int			i;
 	int			j;
 	char		c;
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	int			*ff;
+	int			*cc;
 	int			good;
 	t_utils		*u;
 	t_mlx		mlx;
@@ -54,17 +61,18 @@ typedef struct s_data{
 
 //parsing
 void	check_pos(t_data *data);
-int		parsing_map(char *name, t_data *data);
+void	init_map(char *name, t_data *data);
 int		check_walls(t_data	*data);
 int		parsing_name(char *str);
 int		parsing_ext(char *str);
 int		check_codec(char *name);
 int		check_file(char *name);
-
-//init_map
-void	init_map(char *myfile, t_data *data);
-void	init_map_string(char *myfile, t_data *data);
-void	get_map(char *myfile, t_data *data);
+int		check_args(int ac, char **av);
+void	get_info(t_data *data);
+int		copy_data_tab(t_data *data, int x, char *str, int len, int i);
+int		check_info(t_data *data);
+int		make_all_test(t_data *data, int argc, char **argv);
+void	remove_info(t_data *data);
 
 //LES MATH WHALHA
 void	ray_casting(t_data *data);
@@ -85,8 +93,12 @@ int		ft_strlen_y(char **map);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strchr(char *s, int c);
-size_t	ft_strlen(char *str);
+char	*ft_strchr(const char *s, int c);
+int		ft_strlen(char *str);
 char	*get_next_line(int fd);
 char	*ft_strdup(const char *src);
+int		ft_strncmp(char *check, char c);
+int		ft_atoi(char *str);
+int		ft_isdigit(int c);
+
 #endif

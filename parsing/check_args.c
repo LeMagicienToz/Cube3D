@@ -6,7 +6,7 @@
 /*   By: raphaelperrin <raphaelperrin@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:48:06 by raphaelperr       #+#    #+#             */
-/*   Updated: 2023/04/26 16:06:34 by raphaelperr      ###   ########.fr       */
+/*   Updated: 2023/05/13 02:29:54 by raphaelperr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ int	parsing_name(char *str)
 	while (str && str[i])
 	{
 		if (str[i] != test[i])
-		{
-			printf("\nPlease launch with ./cube3d !\n");
 			return (1);
-		}
 		i++;
 	}
 	return (0);
@@ -71,10 +68,24 @@ int	check_codec(char *name)
 	while (read(fd, &c, 1) > 0)
 	{
 		if ((c < 32 || c > 126 ) && c != 10)
-		{
-			printf("Bad characters :/ \n");
 			return (close(fd), 1);	
-		}
 	}
 	return (close(fd), 0);
+}
+
+int	check_args(int ac, char **av)
+{
+	if (ac == 1)
+		return (printf("\nPlease launch with ./cube3d <map.cub> !\n"), 1);
+	if (ac > 2)
+		return (printf("\nToo many arguments !\n"), 1);
+	if (parsing_name(av[0]) == 1)
+		return (printf("\nBad name !\n"), 1);
+	if (parsing_ext(av[1]) == 1)
+		return (printf("\nBad extension !\n"), 1);
+	if (check_file(av[1]) == 1)
+		return (printf("\nBad map file !\n"), 1);
+	if (check_codec(av[1]) == 1)
+		return (printf("\nBad characters in map file !\n"), 1);
+	return (0);
 }

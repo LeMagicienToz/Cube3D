@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: raphaelperrin <raphaelperrin@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/23 16:39:58 by raphaelperr       #+#    #+#             */
-/*   Updated: 2023/05/16 01:45:40 by raphaelperr      ###   ########.fr       */
+/*   Created: 2023/05/13 02:36:44 by raphaelperr       #+#    #+#             */
+/*   Updated: 2023/05/13 03:02:13 by raphaelperr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../cube.h"
 
-int	main(int argc, char **argv)
+int	ft_strncmp(char *check, char c)
 {
-	t_data data;
+	int	i;
+	int	x;
 
-	if (make_all_test(&data, argc, argv))
+	x = 0;
+	i = 0;
+	if (!c || c == '\0')
 		return (1);
-	else
-		printf("\n[PARSING : GOOD]\n");
+	while (check[i])
+	{
+		if (check[i] == c)
+			x++;
+		i++;
+	}
+	if (x == 1)
+		return (0);
+	return (x);
 }
