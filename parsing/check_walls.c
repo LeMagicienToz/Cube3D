@@ -6,7 +6,7 @@
 /*   By: raphaelperrin <raphaelperrin@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 02:43:34 by rperrin           #+#    #+#             */
-/*   Updated: 2023/05/16 21:43:09 by raphaelperr      ###   ########.fr       */
+/*   Updated: 2023/05/17 15:42:19 by raphaelperr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	check_walls(t_data	*data)
 	{
 		while (data->map[j][i])
 		{
-			if (ft_strncmp("NEOS", data->map[j][i]))
+			if ('N' ==  data->map[j][i])
 			{
 				data->map[j][i] = 'X';
 				check_walls_cut(data, i, j);

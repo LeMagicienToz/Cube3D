@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: raphaelperrin <raphaelperrin@student.42    +#+  +:+       +#+         #
+#    By: rperrin <rperrin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 13:40:09 by muteza            #+#    #+#              #
-#    Updated: 2023/05/16 21:51:50 by raphaelperr      ###   ########.fr        #
+#    Updated: 2023/06/08 19:01:03 by rperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,11 @@ SRCS =	main.c\
 		parsing/check_walls.c\
 		parsing/check_args.c\
 		parsing/check_all.c\
+		parsing/remove_info.c\
 		parsing/get_info.c\
 		parsing/get_info_norm.c\
-		parsing/check_info.c\
-		parsing/remove_info.c\
+		parsing/convert_colors.c\
+		parsing/get_face.c\
 		utils/ft_strcmp_r.c\
 		utils/print_map.c\
 		utils/ft_bzero.c\
@@ -32,6 +33,7 @@ SRCS =	main.c\
 		utils/ft_atoi.c\
 		utils/ft_isdigit.c\
 		utils/ft_strlen.c\
+		#parsing/check_info.c\
 
 OBJS	= ${SRCS:.c=.o}
 

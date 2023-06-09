@@ -1,50 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_all.c                                        :+:      :+:    :+:   */
+/*   get_face.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rperrin <rperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/13 14:37:44 by raphaelperr       #+#    #+#             */
-/*   Updated: 2023/06/08 19:01:29 by rperrin          ###   ########.fr       */
+/*   Created: 2023/06/07 20:11:09 by rperrin           #+#    #+#             */
+/*   Updated: 2023/06/08 16:23:17 by rperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
-void	check_walls_end(t_data *data)
+int	get_face(t_data *data)
 {
-	int		j;
 	int		i;
+	int		j;
 
-	j = 0;
 	i = 0;
+	j = 0;
 	while (data->map[j])
 	{
 		while (data->map[j][i])
 		{
-			if (data->map[j][i] == 'X')
-				data->map[j][i] = '0';
+			if (data->map[j][i] == 'N' || data->map[j][i] == 'S'
+				|| data->map[j][i] == 'E' || data->map[j][i] == 'W')
+			{
+				if (data->face)
+					return (printf("\n[PARSING ERROR : MULTIPLE FACES]\n"), 1);
+				data->face = data->map[j][i];
+			}
 			i++;
 		}
 		i = 0;
 		j++;
 	}
-}
-
-int	make_all_test(t_data *data, int argc, char **argv)
-{
-	if (check_args(argc, argv))
-		return (printf("\n[PARSING ERROR : CHECK ARGS]\n"), 1);
-	init_map(argv[1], data);
-	if (check_info(data))
-		return (printf("\n[PARSING ERROR : CHECK INFO]\n"), 1);
-	get_info(data);
-	remove_info(data);
-	if (get_face(data))
-		return (1);
-	if (check_walls(data))
-		return (printf("\n[PARSING ERROR : CHECK WALLS]\n"), 1);
-	check_walls_end(data);
+	if (!data->face)
+		return (printf("\n[PARSING ERROR : NO FACE]\n"), 1);
 	return (0);
 }

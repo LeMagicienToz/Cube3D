@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_info.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphaelperrin <raphaelperrin@student.42    +#+  +:+       +#+        */
+/*   By: rperrin <rperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 01:22:06 by raphaelperr       #+#    #+#             */
-/*   Updated: 2023/05/16 21:45:10 by raphaelperr      ###   ########.fr       */
+/*   Updated: 2023/06/08 17:14:24 by rperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,48 @@ void	norm_info(void)
 {
 }
 
-int	strcmp_info_check(char *check, char *str, int k)
+int	strcmp_info_check(char *check, char *str, int k, int j)
 {
 	int		i;
 
 	i = 0;
 	while (check[i] && k > 0)
 	{
-		if (str[i] != check[i])
+		if (str[j++] != check[i++])
 			return (0);
 		k--;
-		i++;
 	}
 	return (1);
 }
 
-int check_info_3000(t_data *data, int x)
+int	check_if_digit(char *str, int i)
 {
-	int i;
-	int g;
+	while (str[i] != ',')
+	{
+		if (!ft_isdigit(str[i]))
+			return (1);
+	}
+	return (0);
+}
+
+int	check_info_rgb(char *str)
+{
+	int	i;
+
+	i = 0;
+	return (check_if_digit(str, i));
+	while (str[i])
+	{
+		if (str[i] == ',')
+			return (check_if_digit(str, i));
+		i++;
+	}
+}
+
+int	check_info_3000(t_data *data, int x)
+{
+	int	i;
+	int	g;
 	int	h;
 
 	(norm_info(), h = 0, g = 0, i = 0);
@@ -72,12 +95,11 @@ int	check_info(t_data *data)
 		return (4);
 	if (ft_strlen(data->map[4]) != 0)
 		return (5);
-	if (!strcmp_info_check("F", data->map[5], 1) || !ft_isdigit(data->map[5][2]) || check_info_3000(data, 5))
+	if (!strcmp_info_check("F", data->map[5], 1) || check_info_3000(data, 5))
 		return (6);
-	if (!strcmp_info_check("C", data->map[6], 1) || !ft_isdigit(data->map[6][2]) || check_info_3000(data, 6))
+	if (!strcmp_info_check("C", data->map[6], 1) || check_info_3000(data, 6))
 		return (7);
 	if (ft_strlen(data->map[7]) != 0)
 		return (8);
 	return (0);
 }
-

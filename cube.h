@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphaelperrin <raphaelperrin@student.42    +#+  +:+       +#+        */
+/*   By: rperrin <rperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:46:05 by muteza            #+#    #+#             */
-/*   Updated: 2023/05/16 21:47:15 by raphaelperr      ###   ########.fr       */
+/*   Updated: 2023/06/08 16:22:46 by rperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ typedef struct s_data{
 	char		*ea;
 	int			*ff;
 	int			*cc;
+	char		*hex_ff;
+	char		*hex_cc;
 	int			good;
+	char		face;
 	t_utils		*u;
 	t_mlx		mlx;
 	t_player	player;
@@ -73,6 +76,9 @@ int		copy_data_tab(t_data *data, int x, char *str, int len, int i);
 int		check_info(t_data *data);
 int		make_all_test(t_data *data, int argc, char **argv);
 void	remove_info(t_data *data);
+void	init_mlx(t_data *data);
+void	convert_rgb_to_hex(t_data *data);
+int		get_face(t_data *data);
 
 //LES MATH WHALHA
 void	ray_casting(t_data *data);
